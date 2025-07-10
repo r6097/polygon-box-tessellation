@@ -17,7 +17,13 @@
       crossorigin="anonymous"
     />
     <!-- import the webpage's javascript file -->
-    <script src="script.js" defer></script>
+    <script src="js/canvasHelpers.js"></script>
+    <script src="js/geometry.js"></script>
+    <script src="js/bbscan.js"></script>
+    <script src="js/scanline.js"></script>
+    <script src="js/quadtree.js"></script>
+    <script src="js/reduce.js"></script>
+    <script src="js/index.js" defer></script>
     <!-- bootstrap js bundle -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -36,12 +42,9 @@
         <div class="select-group">
           <label for="processingFunction">Select Processing Function:</label>
           <select id="processingFunction">
-            <option value="bbscan">Bounding Box Scan (Original)</option>
-            <option value="scanlinesquares">
-              Fill squares w/ scanline algo
-            </option>
-            <option value="truescanline">True scanline algo</option>
-            <option value="quadTree">quadTree algo</option>
+            <option value="bbscan">Bounding Box Scan</option>
+            <option value="scanline">Scanline algo</option>
+            <option value="quadTree">QuadTree algo</option>
           </select>
         </div>
         <div class="button-row">
@@ -105,11 +108,11 @@
           </div>
           <div class="slider-container">
             <div>
-              <label for="showBounding">Show Bounding Box:</label>
+              <label for="showBounding">Show Outer Bounding Box:</label>
               <input type="checkbox" id="showBounding" checked />
             </div>
             <div>
-              <label for="showPolygon">Show Original Polygon:</label>
+              <label for="showPolygon">Show Original Drawn Polygon:</label>
               <input type="checkbox" id="showPolygon" checked />
             </div>
             <button id="refineRectangles">Refine Rectangles</button>
