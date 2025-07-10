@@ -1,0 +1,130 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f5f5f5;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+  border: 2px solid #333333;
+  display: block;
+  margin: 20px auto;
+  background: white;
+  cursor: crosshair;
+}
+
+.controls {
+  display: grid;
+  grid-template:
+    "z z z"
+    "a a a"
+    "b c c"
+    "b c c"
+}
+
+.select-group {
+  grid-area: z;
+}
+
+.button-row {
+  grid-area: a;
+  display: grid;
+  grid-template: 
+    "a a a a" 1fr;
+
+  & > button {
+    margin: 5px;
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  & > button:hover {
+    background: #0056b3;
+  }
+  & > button:disabled {
+      background: #cccccc;
+  cursor: not-allowed;
+  }
+}
+
+.legend {
+  grid-area: b;
+  margin-right: 30px;
+  border: 2px solid #333333;
+  display: flex;
+  flex-direction: column;
+  
+  & > div {
+    display: flex;
+  }
+}
+
+.legend-box {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #333333;
+}
+
+.original-polygon {
+  background: rgba(255, 0, 0, 0.3);
+}
+.covering-squares {
+  background: rgba(0, 255, 0, 0.3);
+}
+.bounding-box {
+  background: rgba(0, 0, 255, 0.3);
+}
+
+
+.legend p {
+  margin: 0 15px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.editor {
+  grid-area: c;
+  margin-left: 30px;
+}
+
+.slider-container {
+  margin: 10px 0;
+  
+  & > div {
+    display: flex;
+  }
+}
+.slider-container label {
+  display: inline-block;
+  text-align: left;
+  margin-right: 10px;
+}
+
+input[type="range"] {
+  width: 200px;
+}
+.info {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+@media (max-width: 768px) {
+  .button-row {
+    grid-template: 
+      "a a" 40px
+      "a a" 40px
+  }
+}
