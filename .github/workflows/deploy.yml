@@ -21,14 +21,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
 
       - name: Install dependencies
         run: |
-          rm -rf node_modules
-          npm install
+          npm ci
+          npm list vite
 
       - name: Build
-        run: npm run build
+        run: |
+          echo "Building with base: /polygon-box-tessellation/"
+          npm run build
+
+      - name: Verify build output
+        run: |
+          echo "=== Build directory contents ==="
+          ls -la dist/
+          echo "=== index.html content ==="
+          cat dist/index.html
+          echo "=== Assets directory ==="
+          ls -la dist/assets/ || echo "No assets directory found"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
