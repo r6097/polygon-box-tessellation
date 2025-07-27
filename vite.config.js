@@ -6,4 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [svelte(), tailwindcss()],
   base: "/polygon-box-tessellation/",
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+  },
 });
