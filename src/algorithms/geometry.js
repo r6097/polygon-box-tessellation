@@ -1,4 +1,4 @@
-function getBoundingBox(polygon) {
+export function getBoundingBox(polygon) {
   let minX = Infinity,
     maxX = -Infinity;
   let minY = Infinity,
@@ -14,7 +14,7 @@ function getBoundingBox(polygon) {
   return { minX, maxX, minY, maxY };
 }
 
-function pointInPolygon(point, polygon) {
+export function pointInPolygon(point, polygon) {
   const { x, y } = point;
   const points = polygon.points;
   let inside = false;
@@ -33,7 +33,7 @@ function pointInPolygon(point, polygon) {
   return inside;
 }
 
-function segmentsIntersect(p1, q1, p2, q2) {
+export function segmentsIntersect(p1, q1, p2, q2) {
   function orientation(p, q, r) {
     const val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
     if (Math.abs(val) < 1e-10) return 0;
@@ -65,7 +65,7 @@ function segmentsIntersect(p1, q1, p2, q2) {
 }
 
 // Use to determine if the square will be inside our original polygon
-function polygonOverlapsPolygon(poly1, poly2) {
+export function polygonOverlapsPolygon(poly1, poly2) {
   for (const point of poly1.points) {
     if (pointInPolygon(point, poly2)) {
       return true;
@@ -95,7 +95,7 @@ function polygonOverlapsPolygon(poly1, poly2) {
   return false;
 }
 
-function findHorizontalIntersections(polygon, y) {
+export function findHorizontalIntersections(polygon, y) {
   const intersections = []; // x-values
   const points = polygon.points;
 

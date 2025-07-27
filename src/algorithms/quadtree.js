@@ -1,5 +1,8 @@
 // encapsulate geometry-related functions
-// used in QuadTree class 
+
+import { getBoundingBox } from "./geometry";
+
+// used in QuadTree class
 class Rectangle {
   constructor(x, y, width, height) {
     this.x = x;
@@ -261,7 +264,7 @@ class QuadTree {
   }
 }
 
-function createQuadTree(polygon, squareSize, recursionLimit, minimumQuadSize) {
+export function createQuadTree(polygon, recursionLimit, minimumQuadSize) {
   const bounds = getBoundingBox(polygon);
 
   const rectBounds = new Rectangle(
@@ -274,21 +277,4 @@ function createQuadTree(polygon, squareSize, recursionLimit, minimumQuadSize) {
   const quadTree = new QuadTree(rectBounds, recursionLimit, minimumQuadSize);
   quadTree.generateRectangles(polygon);
   return quadTree.getRectangles().map((r) => r.toAdaptedForm());
-}
-
-function fromPoints(points) {
-  const xCoordinates = points.map((point) => point.x);
-  const yCoordinates = points.map((point) => point.y);
-
-  // Find minimum and maximum values
-  const minX = Math.min(...xCoordinates);
-  const minY = Math.min(...yCoordinates);
-  const maxX = Math.max(...xCoordinates);
-  const maxY = Math.max(...yCoordinates);
-
-  // Calculate width and height
-  const width = maxX - minX;
-  const height = maxY - minY;
-
-  return new Rectangle(minX, minY, width, height);
 }

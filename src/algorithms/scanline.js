@@ -1,17 +1,16 @@
-// Scanline algo
-//
-// imagine slicing the polygon in horizontal pieces, like a 3d printer
-function createScanlines(polygon, squaresize, recursionLimit, minimumQuadSize) {
-  const bounds = getBoundingBox(polygon);
-  const squares = [];
+import { findHorizontalIntersections, getBoundingBox } from "./geometry";
 
+// imagine slicing the polygon in horizontal pieces, like a 3d printer
+export function scanline(polygon, squaresize) {
+  const bounds = getBoundingBox(polygon);
+  if (!bounds) return [];
+
+  const squares = [];
   for (let y = bounds.minY; y < bounds.maxY; y += squaresize) {
     const intersections = findHorizontalIntersections(polygon, y);
 
-    // sort
+    // sort to make joining pairs easier
     intersections.sort((a, b) => a - b);
-
-    // Generate squares between pairs of intersections
     for (let i = 0; i < intersections.length; i += 2) {
       if (i + 1 < intersections.length) {
         const startX = intersections[i];
