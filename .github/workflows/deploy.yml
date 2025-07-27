@@ -42,6 +42,14 @@ jobs:
           echo "=== Assets directory ==="
           ls -la dist/assets/ || echo "No assets directory found"
 
+      - name: Prepare deployment directory
+        run: |
+          # Remove root index.html to avoid conflicts
+          rm -f index.html
+          echo "=== Final deployment files ==="
+          ls -la dist/
+          cat dist/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
