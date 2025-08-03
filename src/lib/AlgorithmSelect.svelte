@@ -18,9 +18,9 @@
 
 <div>
     <label for="algorithm-select">Algorithm:</label>
-    <select id="algorithm-select" bind:value={$selectedAlgorithm} on:change={handleAlgorithmChange}>
+    <select id="algorithm-select" bind:value={$selectedAlgorithm} on:change={handleAlgorithmChange} class="bg-violet-800 text-white border border-slate-600 rounded">
         {#each algorithmOptions as option}
-            <option value={option.value}>{option.label}</option>
+            <option class="bg-violet-600 text-white" value={option.value}>{option.label}</option>
         {/each}
     </select>
 </div>

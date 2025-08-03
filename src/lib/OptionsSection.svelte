@@ -27,11 +27,11 @@
     <div class="flex flex-col gap-2">
         <AlgorithmSelect />
         <div class="flex flex-row items-center gap-2">
-            <button class="border p-2 rounded-md bg-red-600 shadow-md w-32" disabled={!$polygon.isFinished} on:click={handleClear}>Clear Polygon</button>
-        </div>
-        <div class="flex flex-row items-center gap-2">
             <label for="hideOutput">Hide Generated Squares:</label>
             <input type="checkbox" id="hideOutput" bind:checked={$hideOutput} on:change={handleHideOutputChange} disabled={!$polygon.isFinished}/>
+        </div>
+        <div class="flex flex-row items-center gap-2">
+            <button class="border p-2 rounded-md bg-red-600 shadow-md w-32" disabled={!$polygon.isFinished} on:click={handleClear}>Clear Polygon</button>
         </div>
     </div>
 

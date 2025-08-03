@@ -133,7 +133,12 @@
 </script>
 
 <canvas bind:this={canvas} width="800" height="600" on:mousemove={handleMouseMove} on:click={handleClickCanvas} class="relative"></canvas>
-<div class="absolute top-2 left-2 text-sm bg-black/70 text-white p-1 rounded">
-  x: {mouse.x}, y: {mouse.y}
+<div class="absolute top-2 left-2">
+  <div class="text-sm bg-black/70 text-white p-1 rounded">
+    x: {mouse.x}, y: {mouse.y}
+  </div>
+  <div class="text-sm bg-black/70 text-white p-1 rounded">
+    Generated Squares: {$generatedSquares.length}
+  </div>
 </div>
 
