@@ -132,7 +132,7 @@
 
 
   $: if ($drawTrigger || $generatedSquares) {
-    draw(); // will now use up-to-date square data
+    draw();
   }
 </script>
 
