@@ -53,7 +53,11 @@
     const y = event.clientY - rect.top;
 
     const point = canvasToCoord(x, y);
-    polygon.insertPoint(point);
+    const roundedPoint = {
+      x: Math.round(point.x),
+      y: Math.round(point.y)
+    };
+    polygon.insertPoint(roundedPoint);
     drawTrigger.redraw();
   }
 
@@ -138,7 +142,22 @@
     x: {mouse.x}, y: {mouse.y}
   </div>
   <div class="text-sm bg-black/70 text-white p-1 rounded">
-    Generated Squares: {$generatedSquares.length}
+    Polygon Points:
+    <div class="flex flex-col ">
+      {#if polygonPoints.length === 0}
+        <span class="text-xs text-gray-400 p-1 ml-2">None</span>
+      {/if}
+      {#each polygonPoints as point, i}
+        <span class="text-xs text-gray-400 p-1 ml-2">
+          {i}: ({point.x}, {point.y})
+        </span>
+      {/each}
+    </div>
   </div>
+  {#if $generatedSquares.length > 0}
+    <div class="text-sm bg-black/70 text-white p-1 rounded">
+      Generated Squares: {$generatedSquares.length}
+    </div>
+  {/if}
 </div>
 
